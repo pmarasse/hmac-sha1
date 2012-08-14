@@ -7,18 +7,25 @@ import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Classe permettant de calculer une signature de message (HMAC) en utilisant le
  * condensé SHA-1, d'une manière compatible avec la fonction hash_hmac de PHP.
  * 
  * @author Philippe MARASSE
- * @version SVN: $Id$
  * 
  */
 public class HmacShaOne {
 
-    public static final String algorithm = "HmacSHA1";
+    private final Logger log = LoggerFactory.getLogger(getClass());
+    
+    public static final String ALGORITHM = "HmacSHA1";
 
+    /**
+     * Clé secrète
+     */
     private SecretKey          secretKey;
 
     /**
@@ -45,7 +52,7 @@ public class HmacShaOne {
      */
     public void setSecretKey(String in_secret) {
 
-        secretKey = new SecretKeySpec(in_secret.getBytes(), algorithm);
+        secretKey = new SecretKeySpec(in_secret.getBytes(), ALGORITHM);
     }
 
     public String computeHmac(String in_message) {
@@ -56,9 +63,9 @@ public class HmacShaOne {
             hmac.init(secretKey);
             return getHexString(hmac.doFinal(in_message.getBytes()));
         } catch (InvalidKeyException e) {
-            e.printStackTrace();
+            log.error("InvalidKeyException raised. returning null");
         } catch (NoSuchAlgorithmException e1) {
-            e1.printStackTrace();
+            log.error("NoSuchAlgorithmException raised. returning null");
         }
         return null;
     }
