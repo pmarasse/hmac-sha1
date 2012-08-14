@@ -87,15 +87,15 @@
     <distributionManagement>
 
         <repository>
-            <id>orthanc-released</id>
-            <name>Dépôt local releases</name>
-            <url>scp://orthanc.archigny.net/data/orthanc/maven2/released</url>
+            <id>chl-public-released</id>
+            <name>Dépôt CHL public releases</name>
+            <url>scp://dev.ch-poitiers.fr/data/www/dev/maven2/released</url>
         </repository>
 
         <snapshotRepository>
-            <id>orthanc-snapshot</id>
-            <name>Dépôt local snapshots</name>
-            <url>scp://orthanc.archigny.net/data/orthanc/maven2/snapshots</url>
+            <id>chl-public-snapshots</id>
+            <name>Dépôt CHL public snapshots</name>
+            <url>scp://dev.ch-poitiers.fr/data/www/dev/maven2/snapshots</url>
         </snapshotRepository>
 
     </distributionManagement>

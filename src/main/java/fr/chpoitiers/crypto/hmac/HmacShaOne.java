@@ -63,9 +63,9 @@ public class HmacShaOne {
             hmac.init(secretKey);
             return getHexString(hmac.doFinal(in_message.getBytes()));
         } catch (InvalidKeyException e) {
-            log.error("InvalidKeyException raised. returning null");
+            log.warn("InvalidKeyException raised. returning null");
         } catch (NoSuchAlgorithmException e1) {
-            log.error("NoSuchAlgorithmException raised. returning null");
+            log.warn("NoSuchAlgorithmException raised. returning null");
         }
         return null;
     }
